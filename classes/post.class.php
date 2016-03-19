@@ -11,7 +11,7 @@
  *
  * @author sophie
  */
-class user {
+class post {
     private $titlePost;
     private $contentPost;
     
