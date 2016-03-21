@@ -23,7 +23,7 @@ class bdd {
 
 
     public function bdd() {
-        $this->pdo = new PDO("mysql:host=$this->server;challengePoo=$this->_challengePoo",  $this->_dbUser, $this->_dbMdp);
+        $this->pdo = new PDO("mysql:host=$this->_server;challengePoo=$this->_challengePoo",  $this->_dbUser, $this->_dbMdp);
         $this->pdo->setAttribute(PDO::ATTR_ERRMODE,  PDO::ERRMODE_EXCEPTION);
         $this->_tablePost = 'tablePost';
                    
@@ -38,17 +38,7 @@ class bdd {
         
     }
     
-    public function getPostById($idPost) {
-        $sql = "SELECT * FROM $this->_tablePost WHERE idPost=$idPost";
-        $prep = $this->pdo->prepare($sql);
-        $prep->execute();
-        $postBdd = $prep->fetch(PDO::FETCH_OBJ);
-        $post= new post();
-        $post->setTitlePost($postBdd->titlePost);
-        $post->setContentPost($postBdd->contentPost);
-        return $post;
-        
-    }
+
     
     
     

@@ -40,4 +40,17 @@ class post {
         return $this->titlePost."<br>".$this->contentPost;
     }
     
+        public function getPostById($idPost) {
+        $sql = "SELECT * FROM $this->_tablePost WHERE idPost=$idPost";
+        $prep = $this->pdo->prepare($sql);
+        $prep->execute();
+        $postBdd = $prep->fetch(PDO::FETCH_OBJ);
+        $post= new post();
+        $post->setTitlePost($postBdd->titlePost);
+        $post->setContentPost($postBdd->contentPost);
+        return $post;
+        
+    }
+    
+    
 }
